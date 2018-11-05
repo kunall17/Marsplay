@@ -3,4 +3,9 @@
     <string name="title_activity_main">Marsplay</string>
     <string name="empty_recycler">Press the button to upload new photos</string>
     <string name="please_wait">Please wait.</string>
+    <string name="photo_upload">Please wait while photo is being uploaded</string>
+    <string name="uploading">Uploading</string>
+    <string name="toast_uploaded">File Uploaded</string>
+    <string name="toast_upload_failed">Upload failed:</string>
+    <string name="toast_no_file">No file selected</string>
 </resources>
