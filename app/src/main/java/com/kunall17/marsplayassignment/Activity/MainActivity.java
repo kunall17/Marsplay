@@ -35,6 +35,7 @@ import com.google.firebase.storage.UploadTask;
 import com.kunall17.marsplayassignment.Constants;
 import com.kunall17.marsplayassignment.ImageAdapter;
 import com.kunall17.marsplayassignment.R;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -146,7 +147,20 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     selectedImageUri = data == null ? null : data.getData();
                 }
-                uploadFile(selectedImageUri);
+                CropImage.activity(selectedImageUri)
+                        .start(this);
+            }
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                uploadFile(resultUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                error.printStackTrace();
             }
         }
     }
